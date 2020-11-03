@@ -1,5 +1,6 @@
 package com.example.locationreminder;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,23 +18,36 @@ public class BuyGrocery extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseManager db;
-    ArrayList<String> id, new_note;
+    ArrayList<String> id, note_title, new_note; //
     CustomAdapter customAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_grocery);
 
         recyclerView = findViewById(R.id.recyclerview);
+
         db = new DatabaseManager(BuyGrocery.this);
         id = new ArrayList<>();
+        note_title = new ArrayList<>(); //
         new_note = new ArrayList<>();
 
         storeData();;
 
-        customAdapter = new CustomAdapter(BuyGrocery.this, id, new_note);
+        customAdapter = new CustomAdapter(BuyGrocery.this, this, id, note_title, new_note); //
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(BuyGrocery.this));
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1)
+        {
+            recreate();
+        }
     }
 
     public void btnNote(View v)
@@ -54,7 +68,8 @@ public class BuyGrocery extends AppCompatActivity {
         {
             while(cursor.moveToNext()){
                 id.add(cursor.getString(0));
-                new_note.add(cursor.getString(1));
+                note_title.add(cursor.getString(1));
+                new_note.add(cursor.getString(2));
             }
         }
     }

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context=".AddNote">
+    android:orientation="vertical">
+
 
     <EditText
-        android:id="@+id/tv_addtitle"
+        android:id="@+id/tv_addtitle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -17,10 +17,10 @@
         android:layout_marginRight="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Title" />
+        android:text="Name" />
 
     <EditText
-        android:id="@+id/tv_addnote"
+        android:id="@+id/tv_addnote2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -31,11 +31,20 @@
         android:text="Name" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:text="Add" />
+        android:text="Update" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Delete" />
 </LinearLayout>
